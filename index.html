@@ -12,6 +12,10 @@
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
+		<style type="text/css">
+			.reveal section img.plain{background:none}
+		</style>
+
 		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
@@ -24,8 +28,135 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h1>S.O.L.I.D.</h1>
+					<h2>Architecture with Swift</h2>
+					<small>Ali Gangji</small>
+					<div>
+						<img src="images/logo.png" alt="Neon Rain Interactive" class="plain"/>
+					</div>
+				</section>
+				<section>
+					<h2>Why bother?</h2>
+					<p>Following good design principles will help you build software that is robust, easy to understand, and easy to change.</p>
+					<div class="fragment">
+						<p>Further reading:</p>
+						<ul>
+							<li><a href="http://martinfowler.com/bliki/TechnicalDebt.html">Technical Debt (http://martinfowler.com/bliki/TechnicalDebt.html)</a></li>
+							<li><a href="http://swreflections.blogspot.com/2013/09/the-real-cost-of-change-in-software.html">Increasing cost of change curve (http://swreflections.blogspot.com/2013/09/the-real-cost-of-change-in-software.html)</a></li>
+						</ul>
+					</div>
+					<aside class="notes" data-markdown>
+						- It can often be easier up front to sacrifice good design in favor of getting a job done quickly.
+						- If you are building something you expect to scale or maintain, bad design will eventually come back and cost you more than it would have to build it correctly in the first place.
+						- In the worst case, your project will either be so difficult to maintain that you abandoned it or so disfunctional that your users abandon it.
+					</aside>
+				</section>
+				<section>
+					<h2>Cohesion vs Coupling</h2>
+					<p>A good design is characterized by <strong>high cohesion</strong> and <strong>loose coupling</strong></p>
+					<p class="fragment">High cohesion: <strong>keeping parts of a code base that are related to each other in a single place</strong></p>
+					<p class="fragment">Loose coupling: <strong>separating unrelated parts of the code base as much as possible</strong></p>
+					<aside class="notes" data-markdown>
+						- Before we get into SOLID principles, I want to talk a little bit about cohesion and coupling.
+						- You may have heard that a good design ....
+						- This may sound simple but it's actually very difficult. Let's examine this concept a little further.
+					</aside>
+				</section>
+				<section>
+					<h2>Cohesion vs Coupling</h2>
+					<img class="plain" src="images/high-cohesion-loose-coupling.png" style="float:left;width:25%;margin:0"/>
+					<img class="plain" src="images/high-cohesion-high-coupling.png" style="float:left;width:25%;margin:0"/>
+					<img class="plain" src="images/low-cohesion.png" style="float:left;width:25%;margin:0"/>
+					<img class="plain" src="images/destructive-decoupling.png" style="float:left;width:25%;margin:0"/>
+					<aside class="notes" data-markdown>
+						- It’s impossible to completely decouple a code base without damaging its coherence.
+					</aside>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## S.O.L.I.D.
+
+						Initial | Acronym | Definition
+						------- | ------- | ----------
+						S | SRP | Single Responsibility Principle
+						O | OCP | Open/closed principle
+						L | LSP | Liskov substitution principle
+						I | ISP | Interface segregation principle
+						D | DIP | Dependency inversion principle
+					</script>
+				</section>
+				<section>
+<pre><code data-trim data-noescape>
+class Circle {
+	var radius:Int
+	init(radius:Int) {
+		self.radius = radius
+	}
+}
+class Rectangle {
+	var width:Int
+	var height:Int
+	init(width:Int, height:Int) {
+		self.width = width
+		self.height = height
+	}
+}
+</code></pre>
+				</section>
+				<section>
+<pre><code data-trim data-noescape>
+class Circle {
+	var radius:Int
+	init(radius:Int) {
+		self.radius = radius
+	}
+}
+class Rectangle {
+	var width:Int
+	var height:Int
+	init(width:Int, height:Int) {
+		self.width = width
+		self.height = height
+	}
+}
+</code></pre>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## Single Responsibility Principle
+
+						A class should have only a single responsibility (i.e. only one potential change in the software's specification should be able to affect the specification of the class).
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## Open/closed principle
+
+						Software entities should be open for extension, but closed for modification.
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## Liskov substitution principle
+
+						Objects in a program should be replaceable with instances of their subtypes without altering the correctness of the program.
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## Interface segregation principle
+
+						many client-specific interfaces are better than one general-purpose interface.
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## Dependency inversion principle
+
+						One should depend upon abstractions. Do not depend on concretions.
+					</script>
+				</section>
 			</div>
 		</div>
 
